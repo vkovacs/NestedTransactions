@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class UserPersistenceService {
     private final UserRepository userRepository;
 
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Transactional(propagation = Propagation.REQUIRES_NEW) // this prevent the renaming of the user confusingly
     public void renameUser(long id, String newName) {
         var userEntity = userRepository.findById(id).orElseThrow();
         userEntity.setName(newName);
