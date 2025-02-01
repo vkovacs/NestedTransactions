@@ -14,5 +14,6 @@ public class UserPersistenceService {
     public void renameUser(long id, String newName) {
         var userEntity = userRepository.findById(id).orElseThrow();
         userEntity.setName(newName);
+        userRepository.save(userEntity);
     }
 }
