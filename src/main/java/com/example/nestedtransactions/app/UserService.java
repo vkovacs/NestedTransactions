@@ -16,8 +16,9 @@ public class UserService {
     public void processUser(long id) {
         var userEntity = userRepository.findById(id).orElseThrow();
         System.out.println("User name: " + userEntity.getName());
-        var renamedUser = userPersistenceService.renameUser(1, "Alice in Wonderland");
-        System.out.println("User name: " + renamedUser.name());
+        userPersistenceService.renameUser(1, "Alice in Wonderland");
+        var renamedUser = userRepository.findById(id).orElseThrow();
+        System.out.println("Renamed name: " + renamedUser.getName());
 
     }
 
